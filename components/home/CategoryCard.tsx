@@ -19,9 +19,9 @@ const CategoryCard = ({ name, image }: CategoryProps) => {
       </div>
 
       {/* Category Info */}
-      <div className="absolute bottom-3 w-[269px] h-12 left-0 right-0 bg-[#FEF9F9F2] backdrop-blur-sm p-4 flex items-center justify-between">
+      <div className="absolute bottom-6 left-0 w-[85%] bg-[#FEF9F9F2] shadow-lg py-3 px-6 flex items-center justify-between border-l-4 border-[#FEF9F9F2]">
         <h3 className="text-2xl font-normal text-black">{name}</h3>
-        <button className="text-secondary font-normal text-xl hover:text-secondary transition-colors">
+        <button className="text-cyan-500 font-normal text-xl hover:text-cyan-600 transition-colors">
           Shop
         </button>
       </div>

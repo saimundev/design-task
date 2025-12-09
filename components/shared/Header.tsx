@@ -17,8 +17,8 @@ const Header = () => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
   return (
-    <header className=" ">
-      <div className="bg-green-soft text-white py-1.5">
+    <header className="">
+      <div className="bg-green-soft text-white py-1.5 ">
         <div className="container mx-auto ">
           <div className="flex items-center gap-4">
             {/* Logo */}
@@ -33,7 +33,7 @@ const Header = () => {
             </div>
 
             {/* Search Bar - Desktop */}
-            <div className="hidden lg:flex flex-1 max-w-[534px] h-10 rounded-md ml-10">
+            <div className="hidden lg:flex flex-1 max-w-[534px] h-10 rounded-md ml-10 ">
               <div className="flex w-full bg-white rounded overflow-hidden">
                 <select className="bg-white text-gray px-4 py-2 border-r border-gray outline-none text-sm font-normal">
                   <option>All Categories</option>
