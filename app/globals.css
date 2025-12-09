@@ -2,26 +2,38 @@
 
 @theme {
   /* Brand Colors */
-  --color-primary: #15ADB7;
-  --color-primary-dark: #034E53;
-  --color-primary-soft: #00CAD7;
-  --color-secondary: #14B1F0;
-  --color-green-soft:#03484D;
-  --color-green-dark:#0E3B3E;
-  --bg-gray:#B6B6B6;
-  --color-text-gray:#ABA3A3;
-  --color-gray-light:#AA9393;
+  --color-primary: #15adb7;
+  --color-primary-dark: #034e53;
+  --color-primary-soft: #00cad7;
+  --color-secondary: #14b1f0;
+  --color-green-soft: #03484d;
+  --color-green-dark: #0e3b3e;
+  --bg-gray: #b6b6b6;
+  --color-text-gray: #aba3a3;
+  --color-gray-light: #aa9393;
   /* UI colors */
-  --color-surface: #FFFEF6;
-  --color-border: #E2E8F0;
-  --border-gray:#AEAEAE;
+  --color-surface: #fffef6;
+  --color-border: #e2e8f0;
+  --border-gray: #aeaeae;
   /* Text colors */
-  --color-text-base: #0F172A;
-  --color-text-muted: #64748B;
+  --color-text-base: #0f172a;
+  --color-text-muted: #64748b;
 
   /* Fonts */
   --font-sans: Inter, system-ui, sans-serif;
   --font-heading: Poppins, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
@@ -48,33 +60,30 @@
   }
 
   .text-secondary {
-    color:var(--color-secondary)
+    color: var(--color-secondary);
   }
   .text-primary-soft {
     color: var(--color-primary-soft);
   }
 
-  
+  .banner-button {
+    background-color: var(--color-secondary);
+    color: white;
+    width: 152px;
+    height: 40px;
+    border-radius: 5px;
+  }
 
- .banner-button {
-  background-color: var(--color-secondary);
-  color: white;
-  width: 152px;
-  height: 40px;
-  border-radius: 5px;
- }
+  .card-button {
+    background-color: var(--color-primary);
+    height: 25px;
+  }
 
- .card-button {
-  background-color: var(--color-primary);
-  height: 25px;
- }
+  .social-icon-size {
+    @apply w-2.5 h-5.5;
+  }
 
- .social-icon-size {
-  @apply w-2.5 h-5.5
- }
-
- .footer-menu-item{
-  @apply text-white text-sm font-normal
- }
-
+  .footer-menu-item {
+    @apply text-white text-sm font-normal;
+  }
 }

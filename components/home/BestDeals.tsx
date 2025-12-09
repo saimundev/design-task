@@ -1,15 +1,16 @@
 import { getCategories, getProductByCategory } from "@/actions/product.action";
 import BestDealsCard from "./BestDealsCard";
-const BestDeals = async () => {
+const BestDeals = async ({ active = 0 }: { active?: number }) => {
   const categorys = await getCategories();
-  const productsCategory = await getProductByCategory(categorys?.data[0]?.name);
-
-  console.log("categorys?.data[0]?.name", categorys?.data[0]?.name);
+  const activeCategory =
+    categorys?.data[active]?.name || categorys?.data[0]?.name;
+  const productsCategory = await getProductByCategory(activeCategory);
 
   return (
     <BestDealsCard
       products={productsCategory?.data}
       categorys={categorys?.data}
+      initialActiveIndex={active}
     />
   );
 };

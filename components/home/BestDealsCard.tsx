@@ -11,14 +11,23 @@ import { useSearchParams, useRouter } from "next/navigation";
 type BestDealsCard = {
   products: ProductItems[];
   categorys: CategoryItem[];
+  initialActiveIndex: number;
 };
 
-const BestDealsCard = ({ products, categorys }: BestDealsCard) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const BestDealsCard = ({
+  products,
+  categorys,
+  initialActiveIndex,
+}: BestDealsCard) => {
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
   const router = useRouter();
   useEffect(() => {
-    router.push(`?active=${activeIndex}`);
-  }, [activeIndex]);
+    router.push(`?active=${activeIndex}`, { scroll: false });
+  }, [activeIndex, router]);
+
+  useEffect(() => {
+    setActiveIndex(initialActiveIndex);
+  }, [initialActiveIndex]);
 
   const handlePrev = () => {
     setActiveIndex((prev) => Math.max(0, prev - 1));

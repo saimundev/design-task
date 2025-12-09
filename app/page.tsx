@@ -9,7 +9,12 @@ import Header from "@/components/shared/Header";
 import CardSkeleton from "@/components/skeleton/CardSkeleton";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { active } = await searchParams;
   return (
     <div className="">
       <Header />
@@ -21,8 +26,7 @@ export default function Home() {
       <Suspense fallback={<CardSkeleton />}>
         <NewArrivals />
       </Suspense>
-
-      <BestDeals />
+      <BestDeals active={Number(active) || 0} />
       <Footer />
     </div>
   );

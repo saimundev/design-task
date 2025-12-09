@@ -9,10 +9,10 @@ import InstgramIcon from "@/icons/InstgramIcon";
 export default function Footer() {
   return (
     <footer className="bg-[#393939] text-white w-full mt-10">
-      <div className="px-37 pt-14 pb-30">
-        <div className="grid grid-cols-4 place-items-center gap-16">
+      <div className="px-4 md:px-10 lg:px-37 pt-14 pb-10 lg:pb-30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-start lg:place-items-center gap-10 lg:gap-16">
           {/* Brand Section */}
-          <div className="flex flex-col gap-3.5">
+          <div className="flex flex-col gap-3.5 w-full">
             <div className="flex items-end">
               <Image
                 src={BrandLogo}
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           {/* Trending Section */}
-          <div>
+          <div className="w-full">
             <h3 className="text-primary-soft font-normal mb-5">Trending</h3>
             <ul className="space-y-3">
               <li className="text-xl text-primary-soft font-normal">
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           {/* Information Section */}
-          <div>
+          <div className="w-full">
             <h3 className="text-primary-soft font-normal mb-5">Information</h3>
             <ul className="space-y-3">
               <li className="footer-menu-item">About Us</li>
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           {/* Customer Care Section */}
-          <div>
+          <div className="w-full">
             <h3 className="text-primary-soft font-normal mb-5">
               Customer Care
             </h3>
@@ -90,7 +90,7 @@ export default function Footer() {
         </div>
 
         {/* Payment image */}
-        <div className="flex justify-end mt-9 mr-24">
+        <div className="flex justify-center lg:justify-end mt-9 lg:mr-24">
           <Image
             src={PaymentImage}
             alt="payment image"
@@ -101,8 +101,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#161616] h-15 flex items-center">
-        <p className="text-[13px] text-center font-normal pl-31">
+      <div className="bg-[#161616] h-auto py-4 lg:h-15 flex items-center justify-center lg:justify-start">
+        <p className="text-[13px] text-center font-normal px-4 lg:pl-31">
           © 2021 Winstore. All Rights Reserved.
         </p>
       </div>
