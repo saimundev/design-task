@@ -48,12 +48,12 @@ const BestDealsCard = ({
   );
 
   return (
-    <div className="container mx-auto mt-24">
-      <div className="flex justify-between items-center">
-        <div className="text-[28px] font-normal ml-10">
+    <div className="container mx-auto mt-10 lg:mt-24 px-4 lg:px-0">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 lg:gap-0">
+        <div className="text-[28px] font-normal ml-0 lg:ml-10">
           <span className="text-primary-soft">Best</span> Deals
         </div>
-        <div className="relative">
+        <div className="relative w-full lg:w-auto">
           <div className="flex items-center relative">
             {/* Categories Scrollable Container */}
             <div className="flex-1 overflow-hidden">
@@ -80,7 +80,7 @@ const BestDealsCard = ({
             </div>
 
             {/* Right Arrow Button and Counter */}
-            <div className="ml-14">
+            <div className="ml-4 lg:ml-14 flex-shrink-0">
               <button
                 onClick={handlePrev}
                 disabled={activeIndex === 0}
@@ -105,7 +105,7 @@ const BestDealsCard = ({
       </div>
 
       {/* Content Area - Shows which category is selected */}
-      <div className="grid grid-cols-6  gap-8 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-5">
         {products?.map((product, index) => (
           <ProductCard product={product} key={index} />
         ))}

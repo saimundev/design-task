@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           width={400}
           height={130}
           alt={title}
-          className="w-full h-32.5"
+          className="w-full object-contain h-32.5"
         />
       </div>
 

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CategoryCard from "./CategoryCard";
 import ArrowLeft from "@/icons/ArrowLeft";
 import ArrowRights from "@/icons/ArrowRights";
 import { CategoryItem } from "@/types/product";
+import { categories } from "@/constant/categoryItem";
 
 type CategoryProps = {
   categorys: CategoryItem[];
@@ -12,46 +13,24 @@ type CategoryProps = {
 
 const CategorySlider = ({ categorys }: CategoryProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(4);
 
-  const categories = [
-    {
-      id: 1,
-      title: "Electronics",
-      image:
-        "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop",
-      alt: "Electronics - Laptop and workspace",
-    },
-    {
-      id: 2,
-      title: "Fashion",
-      image:
-        "https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&h=400&fit=crop",
-      alt: "Fashion - Clothing and accessories",
-    },
-    {
-      id: 3,
-      title: "Appliances",
-      image:
-        "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop",
-      alt: "Appliances - Modern kitchen",
-    },
-    {
-      id: 4,
-      title: "Babies Store",
-      image:
-        "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=400&fit=crop",
-      alt: "Babies Store - Baby products",
-    },
-    {
-      id: 5,
-      title: "Home & Garden",
-      image:
-        "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=400&fit=crop",
-      alt: "Home & Garden - Interior design",
-    },
-  ];
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(4);
+      }
+    };
 
-  const itemsPerView = 4;
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const maxIndex = Math.max(0, categorys?.length - itemsPerView);
 
   const handlePrev = () => {
@@ -66,9 +45,9 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
     <div className="w-full bg-linear-to-b from-[#F3EDC9] to-[#FFFFFF00]">
       <div className="relative">
         {/* Carousel Container */}
-        <div className="overflow-hidden container mx-auto">
+        <div className="overflow-hidden container mx-auto px-4 lg:px-0">
           <div
-            className="flex p-4 space-x-4 transition-transform duration-500 ease-out"
+            className="flex transition-transform duration-500 ease-out"
             style={{
               transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
             }}
@@ -78,11 +57,16 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
                 (item) => item.id === category.id
               );
               return (
-                <CategoryCard
+                <div
                   key={category.id}
-                  name={category.name}
-                  image={matchedImage?.image || ""}
-                />
+                  className="flex-shrink-0 px-2"
+                  style={{ width: `${100 / itemsPerView}%` }}
+                >
+                  <CategoryCard
+                    name={category.name}
+                    image={matchedImage?.image || ""}
+                  />
+                </div>
               );
             })}
           </div>
@@ -92,7 +76,7 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className="absolute left-10 top-1/2 -translate-y-1/2 -translate-x-4 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="absolute left-2 lg:left-20 top-1/2 -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           aria-label="Previous slide"
         >
           <ArrowLeft className="w-4 h-8 text-black" />
@@ -102,7 +86,7 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
         <button
           onClick={handleNext}
           disabled={currentIndex === maxIndex}
-          className="absolute right-10 top-1/2 -translate-y-1/2 translate-x-4 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          className="absolute right-2 lg:right-20 top-1/2 -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           aria-label="Next slide"
         >
           <ArrowRights className="w-6 h-6 text-gray-800" />
