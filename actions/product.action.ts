@@ -13,8 +13,8 @@ export async function getCategories(): Promise<Category> {
 
 export async function getProductByCategory(
   category: string
-): Promise<Product[]> {
-  return api<Product[]>(`/category/${category}`);
+): Promise<Product> {
+  return api<Product>(`/products/category/${category}`);
 }
 
 export async function getSingleProduct(id: string): Promise<Product> {

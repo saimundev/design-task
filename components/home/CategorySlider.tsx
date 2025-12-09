@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import CategoryCard from "./CategoryCard";
 import ArrowLeft from "@/icons/ArrowLeft";
@@ -64,16 +65,6 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
   return (
     <div className="w-full bg-linear-to-b from-[#F3EDC9] to-[#FFFFFF00]">
       <div className="relative">
-        {/* Previous Button */}
-        <button
-          onClick={handlePrev}
-          disabled={currentIndex === 0}
-          className="absolute left-10 top-1/2 -translate-y-1/2 -translate-x-4 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-          aria-label="Previous slide"
-        >
-          <ArrowLeft className="w-4 h-8 text-black" />
-        </button>
-
         {/* Carousel Container */}
         <div className="overflow-hidden container mx-auto">
           <div
@@ -96,6 +87,16 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
             })}
           </div>
         </div>
+
+        {/* Previous Button */}
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          className="absolute left-10 top-1/2 -translate-y-1/2 -translate-x-4 z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          aria-label="Previous slide"
+        >
+          <ArrowLeft className="w-4 h-8 text-black" />
+        </button>
 
         {/* Next Button */}
         <button

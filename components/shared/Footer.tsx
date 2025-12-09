@@ -8,9 +8,9 @@ import InstgramIcon from "@/icons/InstgramIcon";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#393939] text-white w-full">
+    <footer className="bg-[#393939] text-white w-full mt-10">
       <div className="px-37 pt-14 pb-30">
-        <div className="grid grid-cols-4 justify-center gap-16">
+        <div className="grid grid-cols-4 place-items-center gap-16">
           {/* Brand Section */}
           <div className="flex flex-col gap-3.5">
             <div className="flex items-end">
@@ -39,107 +39,69 @@ export default function Footer() {
 
             <div className="flex gap-6">
               <FacebookIcon className="social-icon-size" />
-              <TwitterIcon className="social-icon-size" />
-              <LinkdinIcon className="social-icon-size" />
-              <InstgramIcon className="social-icon-size" />
+              <TwitterIcon className="w-5.5 h-4.5" />
+              <LinkdinIcon className="w-3.5 h-3.5" />
+              <InstgramIcon className="w-5.5 h-5.5" />
             </div>
           </div>
 
           {/* Trending Section */}
           <div>
-            <h3 className="text-[#00bcd4] text-[15px] font-normal mb-5">
-              Trending
-            </h3>
-            <ul className="space-y-[10px]">
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
+            <h3 className="text-primary-soft font-normal mb-5">Trending</h3>
+            <ul className="space-y-3">
+              <li className="text-xl text-primary-soft font-normal">
                 Installments
               </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Electronics
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Grocery
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Health & Beauty
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Home Appliances
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Mobile Accessories
-              </li>
+              <li className="footer-menu-item">Electronics</li>
+              <li className="footer-menu-item">Grocery</li>
+              <li className="footer-menu-item">Health & Beauty</li>
+              <li className="footer-menu-item">Home Appliances</li>
+              <li className="footer-menu-item">Mobile Accessories</li>
             </ul>
           </div>
 
           {/* Information Section */}
           <div>
-            <h3 className="text-[#00bcd4] text-[15px] font-normal mb-5">
-              Information
-            </h3>
-            <ul className="space-y-[10px]">
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                About Us
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Contact Us
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                FAQs
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Shipping & Return
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Privacy policy
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Terms & Conditions
-              </li>
+            <h3 className="text-primary-soft font-normal mb-5">Information</h3>
+            <ul className="space-y-3">
+              <li className="footer-menu-item">About Us</li>
+              <li className="footer-menu-item">Contact Us</li>
+              <li className="footer-menu-item">FAQs</li>
+              <li className="footer-menu-item">Shipping & Return</li>
+              <li className="footer-menu-item">Privacy policy</li>
+              <li className="footer-menu-item">Terms & Conditions</li>
             </ul>
           </div>
 
           {/* Customer Care Section */}
           <div>
-            <h3 className="text-[#00bcd4] text-[15px] font-normal mb-5">
+            <h3 className="text-primary-soft font-normal mb-5">
               Customer Care
             </h3>
-            <ul className="space-y-[10px]">
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                My Account
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Track Your Order
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Recently Viewed
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Wishlist
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Compare
-              </li>
-              <li className="text-[13px] font-normal cursor-pointer hover:text-[#00bcd4] transition">
-                Become a Vendor
-              </li>
+            <ul className="space-y-3">
+              <li className="footer-menu-item">My Account</li>
+              <li className="footer-menu-item">Track Your Order</li>
+              <li className="footer-menu-item">Recently Viewed</li>
+              <li className="footer-menu-item">Wishlist</li>
+              <li className="footer-menu-item">Compare</li>
+              <li className="footer-menu-item">Become a Vendor</li>
             </ul>
           </div>
         </div>
 
         {/* Payment image */}
-        <div className="flex justify-end mt-2.5">
+        <div className="flex justify-end mt-9 mr-24">
           <Image
             src={PaymentImage}
             alt="payment image"
-            width={420}
+            width={421}
             height={55}
           />
         </div>
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-[#161616] h-15 mt-6 flex items-center">
+      <div className="bg-[#161616] h-15 flex items-center">
         <p className="text-[13px] text-center font-normal pl-31">
           © 2021 Winstore. All Rights Reserved.
         </p>

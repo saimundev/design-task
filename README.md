@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Project Title
 
-## Getting Started
+**[Short, catchy description of your project and its main purpose.]**
 
-First, run the development server:
+This project is a modern web application built with **Next.js** and **TypeScript**, utilizing a well-organized folder structure to facilitate development and maintenance.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting Started: How to Install and Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Follow these steps to set up and run the project locally.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Prerequisites
 
-## Learn More
+You need to have **Node.js** installed on your machine.
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository:**
+    ```bash
+    git clone [Your Repository URL]
+    cd [Your Project Folder Name]
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install  # or yarn install
+    ```
+3.  **Set up Environment Variables:**
+    * Create a file named **`.env.local`** in the root directory.
+    * Copy the contents from the **`.env.example`** file and fill in the required values (e.g., API keys, database connection strings).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Running the Project
 
-## Deploy on Vercel
+1.  **Run the development server:**
+    ```bash
+    npm run dev  # or yarn dev
+    ```
+2.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Build and Serve (Production)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Build the application for production:**
+    ```bash
+    npm run build  # or yarn build
+    ```
+2.  **Start the production server:**
+    ```bash
+    npm start  # or yarn start
+    ```
+
+---
+
+## Project Structure
+
+The project follows a standard Next.js file structure using the **App Router**, with logical separation for components, assets, constants, and types.
+
+
+
+
+| Directory/File | Purpose |
+| :--- | :--- |
+| **`app/`** | The Next.js **App Router** root directory. Contains route segments and core UI files. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**`product/`** | Route segment for product-related pages (e.g., detail or listing). |
+| &nbsp;&nbsp;&nbsp;&nbsp;`layout.tsx` | The **Root Layout** component (global wrapper, header, footer, etc.). |
+| &nbsp;&nbsp;&nbsp;&nbsp;`page.tsx` | The **Root Page** component (the application's homepage). |
+| **`assets/images/`** | Stores static images like logos and graphics (e.g., `banner.png`, `brand.png`). |
+| **`components/`** | Reusable React components for building the UI. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**`home/`** | Components that are specific to the home page. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**`shared/`** | Generic components reusable throughout the app. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**`skeleton/`** | Components for loading states (placeholder UI). |
+| **`constant/`** | Stores static configuration and data. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`navmenu.ts` | Data defining the navigation menu links. |
+| **`public/`** | Static assets served directly from the root URL (e.g., `favicon.ico`). |
+| **`types/`** | TypeScript type definitions and interfaces for data models. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`product.ts` | The TypeScript interface defining the Product data structure. |
+| **`utils/`** | Helper functions and utility logic. |
+| `.env.example` | Template for required environment variables. |
+| `next.config.mjs` | Primary configuration file for Next.js. |
+| `package.json` | Project metadata, scripts, and dependencies. |
+| `tsconfig.json` | Configuration for the TypeScript compiler. |
+
+---
+
+## Tech Stack
+
+* **Framework:** Next.js
+* **Language:** TypeScript
+* **Styling:** [Specify your CSS solution, e.g., Tailwind CSS]
+
+
+

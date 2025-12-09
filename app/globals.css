@@ -50,6 +50,11 @@
   .text-secondary {
     color:var(--color-secondary)
   }
+  .text-primary-soft {
+    color: var(--color-primary-soft);
+  }
+
+  
 
  .banner-button {
   background-color: var(--color-secondary);
@@ -59,8 +64,17 @@
   border-radius: 5px;
  }
 
+ .card-button {
+  background-color: var(--color-primary);
+  height: 25px;
+ }
+
  .social-icon-size {
   @apply w-2.5 h-5.5
+ }
+
+ .footer-menu-item{
+  @apply text-white text-sm font-normal
  }
 
 }
