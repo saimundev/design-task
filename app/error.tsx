@@ -10,7 +10,6 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
@@ -24,10 +23,7 @@ export default function Error({
         internet connection or try again later.
       </p>
       <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
+        onClick={() => reset()}
         className="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary-dark transition-colors"
       >
         Try again

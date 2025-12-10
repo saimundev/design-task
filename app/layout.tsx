@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  icons: "/icon.png",
+  icons: "../public/icon.png",
   title: "Win Store - Shop Computer & Experience",
   description: "Your one-stop shop for computers and electronics.",
   openGraph: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "Win Store",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "../public/opengraph-image.png",
         width: 800,
         height: 600,
       },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Win Store - Shop Computer & Experience",
     description: "Your one-stop shop for computers and electronics.",
-    images: ["/opengraph-image.png"],
+    images: ["../public/opengraph-image.png"],
   },
 };
 

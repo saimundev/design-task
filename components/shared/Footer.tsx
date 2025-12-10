@@ -8,7 +8,7 @@ import InstgramIcon from "@/icons/InstgramIcon";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#393939] text-white w-full mt-10">
+    <footer className="bg-[#393939] text-white w-full mt-20">
       <div className="px-4 md:px-10 lg:px-37 pt-14 pb-10 lg:pb-30">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-start lg:place-items-center gap-10 lg:gap-16">
           {/* Brand Section */}

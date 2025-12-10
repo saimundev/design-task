@@ -58,23 +58,6 @@ const Banner = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeSlideIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fadeSlideIn {
-          animation: fadeSlideIn 0.5s ease-out;
-        }
-      `}</style>
     </div>
   );
 };
