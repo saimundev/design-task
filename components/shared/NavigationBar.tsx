@@ -3,6 +3,8 @@ import FacebookIcon from "@/icons/FacebookIcon";
 import TwitterIcon from "@/icons/TwitterIcon";
 import LinkdinIcon from "@/icons/LinkdinIcon";
 import InstgramIcon from "@/icons/InstgramIcon";
+import { ProductItems } from "@/types/product";
+import { useMemo } from "react";
 
 type MenuItem = {
   id: number;
@@ -15,6 +17,7 @@ type NavigationProps = {
   setIsCategoriesOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isCategoriesOpen: boolean;
+  products?: ProductItems[];
 };
 const NavigationBar = ({
   menu,
@@ -22,7 +25,20 @@ const NavigationBar = ({
   setIsCategoriesOpen,
   setIsMenuOpen,
   isCategoriesOpen,
+  products,
 }: NavigationProps) => {
+  const groupedProducts = useMemo(() => {
+    if (!products) return {};
+
+    return products.reduce((acc, product) => {
+      const category = product.category;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(product);
+      return acc;
+    }, {} as Record<string, ProductItems[]>);
+  }, [products]);
   return (
     <nav className="bg-green-dark border-t border-teal-700 text-white">
       <div className="container mx-auto px-4">
@@ -83,86 +99,24 @@ const NavigationBar = ({
       {isCategoriesOpen && (
         <div className="bg-white text-gray-800 shadow-lg absolute left-0 right-0 z-50 max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6">
-            <div className="space-y-2">
-              <h3 className="font-bold text-teal-800">Electronics</h3>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Laptops
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Phones
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Cameras
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-teal-800">Fashion</h3>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Men's Wear
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Women's Wear
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Accessories
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-teal-800">Home & Garden</h3>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Furniture
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Kitchen
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Decor
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-teal-800">Sports</h3>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Equipment
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Clothing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-teal-600">
-                    Shoes
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {Object.entries(groupedProducts).map(([category, items]) => (
+              <div key={category} className="space-y-2">
+                <h3 className="font-bold text-teal-800 capitalize">
+                  {category}
+                </h3>
+                <ul className="space-y-1 text-sm">
+                  {items.slice(0, 3).map((product) => (
+                    <li key={product.id}>
+                      <a href="#" className="hover:text-teal-600">
+                        {product.title.length > 30
+                          ? product.title.substring(0, 30) + "..."
+                          : product.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       )}

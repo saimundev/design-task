@@ -2,16 +2,14 @@
 
 import { ProductItems } from "@/types/product";
 import ProductCard from "./ProductCard";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const NewArrivalsCarousel = ({ products }: { products: ProductItems[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
-  // Duplicate products to create a seamless loop
-  // We need enough duplicates to fill the screen and allow for smooth looping
   const carouselProducts = [...products, ...products, ...products];
-  const itemWidth = 312; // 280px width + 32px margin (mx-4 = 16px * 2)
+  const itemWidth = 312;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,13 +25,19 @@ const NewArrivalsCarousel = ({ products }: { products: ProductItems[] }) => {
   };
 
   const handleTransitionEnd = () => {
-    // If we've reached the end of the first set of products, reset to the start of the second set
-    // This creates the infinite loop illusion
     if (currentIndex >= products.length * 2) {
       setIsTransitioning(false);
       setCurrentIndex(products.length);
     }
   };
+
+  if (!products || products.length === 0) {
+    return (
+      <div className="w-full h-[400px] flex items-center justify-center">
+        <p className="text-gray-500 text-lg">No new arrivals available</p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full overflow-hidden py-5">

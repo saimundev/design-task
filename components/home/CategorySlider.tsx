@@ -41,6 +41,14 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
 
+  if (!categorys || categorys.length === 0) {
+    return (
+      <div className="w-full bg-linear-to-b from-[#F3EDC9] to-[#FFFFFF00] min-h-[200px] flex items-center justify-center">
+        <p className="text-gray-500 text-lg">No categories available</p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full bg-linear-to-b from-[#F3EDC9] to-[#FFFFFF00]">
       <div className="relative">
@@ -52,7 +60,7 @@ const CategorySlider = ({ categorys }: CategoryProps) => {
               transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
             }}
           >
-            {categorys?.map((category: CategoryItem) => {
+            {categorys.map((category: CategoryItem) => {
               const matchedImage = categories.find(
                 (item) => item.id === category.id
               );

@@ -1,12 +1,11 @@
 "use client";
 
-import { Category, CategoryItem, ProductItems } from "@/types/product";
+import { CategoryItem, ProductItems } from "@/types/product";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import ArrowLeft from "@/icons/ArrowLeft";
 import Left from "@/icons/Left";
 import Right from "@/icons/Right";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type BestDealsCard = {
   products: ProductItems[];
@@ -63,19 +62,25 @@ const BestDealsCard = ({
                   transform: `translateX(-${scrollPosition * 200}px)`,
                 }}
               >
-                {categorys.map((category, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleCategoryClick(index)}
-                    className={`flex-shrink-0 px-6 py-4 text-lg font-normal ${
-                      index === activeIndex
-                        ? "text-primary-soft border-b-3 border-[#0AAEB9]"
-                        : "text-gray-700 hover:text-gray-900"
-                    }`}
-                  >
-                    {category.name}
-                  </button>
-                ))}
+                {!categorys || categorys.length === 0 ? (
+                  <div className="flex-shrink-0 px-6 py-4 text-lg font-normal text-gray-500">
+                    No categories found
+                  </div>
+                ) : (
+                  categorys.map((category, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleCategoryClick(index)}
+                      className={`flex-shrink-0 px-6 py-4 text-lg font-normal ${
+                        index === activeIndex
+                          ? "text-primary-soft border-b-3 border-[#0AAEB9]"
+                          : "text-gray-700 hover:text-gray-900"
+                      }`}
+                    >
+                      {category.name}
+                    </button>
+                  ))
+                )}
               </div>
             </div>
 
@@ -105,11 +110,19 @@ const BestDealsCard = ({
       </div>
 
       {/* Content Area - Shows which category is selected */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-5">
-        {products?.map((product, index) => (
-          <ProductCard product={product} key={index} />
-        ))}
-      </div>
+      {!products || products.length === 0 ? (
+        <div className="w-full h-[300px] flex items-center justify-center col-span-full">
+          <p className="text-gray-500 text-lg">
+            No products available in this category
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-5">
+          {products.map((product, index) => (
+            <ProductCard product={product} key={index} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
