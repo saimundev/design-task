@@ -130,9 +130,11 @@ const HeaderClient = ({
           <div className="lg:hidden mt-4">
             <div className="flex w-full bg-white rounded overflow-hidden">
               <select className="bg-gray-50 text-gray-700 px-3 py-2 border-r border-gray-300 outline-none text-sm">
-                <option>All</option>
-                <option>Electronics</option>
-                <option>Fashion</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
               <input
                 type="text"

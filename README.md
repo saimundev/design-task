@@ -1,6 +1,4 @@
-# 🚀 Project Title
-
-**[Short, catchy description of your project and its main purpose.]**
+# 🚀 Win Store
 
 This project is a modern web application built with **Next.js** and **TypeScript**, utilizing a well-organized folder structure to facilitate development and maintenance.
 
@@ -18,8 +16,8 @@ You need to have **Node.js** installed on your machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [Your Repository URL]
-    cd [Your Project Folder Name]
+    git clone https://github.com/saimundev/design-task.git
+    cd design-task
     ```
 2.  **Install dependencies:**
     ```bash
@@ -85,7 +83,7 @@ The project follows a standard Next.js file structure using the **App Router**, 
 
 * **Framework:** Next.js
 * **Language:** TypeScript
-* **Styling:** [Specify your CSS solution, e.g., Tailwind CSS]
+* **Styling:** Tailwind CSS
 
 
 
