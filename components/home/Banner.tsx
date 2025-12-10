@@ -6,8 +6,8 @@ const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="w-full min-h-[500px] lg:h-[444px] relative bg-[url('/banner.png')] bg-cover bg-center py-10 lg:py-0 flex items-center">
-      <div className="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between relative px-4 gap-8 lg:gap-0">
+    <div className="w-full min-h-[500px] lg:h-[444px] relative bg-[url('/banner.png')] bg-[length:100%_100%] bg-center py-10 lg:py-0 flex items-center">
+      <div className="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between relative px-4 gap-2 lg:gap-0">
         {/* Left Content */}
         <div
           key={currentSlide}
@@ -33,7 +33,7 @@ const Banner = () => {
         {/* Right Content - Product Display */}
         <div
           key={`img-${currentSlide}`}
-          className="w-full lg:w-1/2 relative flex items-center justify-center animate-fadeSlideIn h-auto lg:h-auto order-first lg:order-last mb-4 lg:mb-0"
+          className="w-full lg:w-1/2 relative flex items-center justify-center animate-fadeSlideIn h-auto lg:h-auto order-first lg:order-last mb-0 lg:mb-0"
         >
           <div className="relative lg:absolute w-32 h-32 lg:w-41 lg:h-40 text-white rounded-full text-3xl lg:text-5xl top-0 lg:-top-36 right-0 lg:right-10 bg-linear-to-r from-[#FDC830] to-[#F37335] flex flex-col justify-center items-center shadow-lg">
             <span>{slides[currentSlide].discount}</span>

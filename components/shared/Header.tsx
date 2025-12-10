@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import BrandImage from "../../assets/images/brand.png";
 import SearchIcons from "@/icons/SearchIcons";
@@ -15,11 +15,20 @@ import { NAV_MENU } from "@/constant/navmenu";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+
+  const categories = [
+    "All Categories",
+    "Electronics",
+    "Fashion",
+    "Home & Garden",
+  ];
 
   return (
     <header className="">
       <div className="bg-green-soft text-white py-1.5 ">
-        <div className="container mx-auto ">
+        <div className="container mx-auto px-4">
           <div className="flex items-center gap-4">
             {/* Logo */}
 
@@ -34,13 +43,35 @@ const Header = () => {
 
             {/* Search Bar - Desktop */}
             <div className="hidden lg:flex flex-1 max-w-[534px] h-10 rounded-md ml-10 ">
-              <div className="flex w-full bg-white rounded overflow-hidden">
-                <select className="bg-white text-gray px-4 py-2 border-r border-gray outline-none text-sm font-normal">
-                  <option>All Categories</option>
-                  <option>Electronics</option>
-                  <option>Fashion</option>
-                  <option>Home & Garden</option>
-                </select>
+              <div className="flex w-full bg-white rounded">
+                <div className="relative h-full">
+                  <button
+                    className="flex items-center justify-between h-full px-4 min-w-[160px] border-r border-gray outline-none bg-white text-gray text-sm font-normal"
+                    onClick={() =>
+                      setIsSearchDropdownOpen(!isSearchDropdownOpen)
+                    }
+                  >
+                    <span>{selectedCategory}</span>
+                    <ChevronDown className="w-4 h-4 ml-2 opacity-50" />
+                  </button>
+
+                  {isSearchDropdownOpen && (
+                    <div className="absolute top-full left-0 w-full bg-white shadow-lg rounded-b-md py-1 z-50 border-t border-gray-100">
+                      {categories.map((category) => (
+                        <button
+                          key={category}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-teal-600 transition-colors"
+                          onClick={() => {
+                            setSelectedCategory(category);
+                            setIsSearchDropdownOpen(false);
+                          }}
+                        >
+                          {category}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 <input
                   type="text"
                   placeholder="Search for products"
@@ -82,7 +113,7 @@ const Header = () => {
 
               {/* Mobile Menu Toggle */}
               <button
-                className="lg:hidden"
+                className="lg:hidden ml-4"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

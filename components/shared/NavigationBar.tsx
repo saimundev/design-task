@@ -5,10 +5,10 @@ import LinkdinIcon from "@/icons/LinkdinIcon";
 import InstgramIcon from "@/icons/InstgramIcon";
 
 type MenuItem = {
-    id:number;
-    name:string;
-    link:string;
-}
+  id: number;
+  name: string;
+  link: string;
+};
 type NavigationProps = {
   menu: MenuItem[];
   isMenuOpen: boolean;
@@ -25,7 +25,7 @@ const NavigationBar = ({
 }: NavigationProps) => {
   return (
     <nav className="bg-green-dark border-t border-teal-700 text-white">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-9 py-3">
           <button
